@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "test": {
+            "description": "需要上传到oss的文件类型数组，元素类型为正则，必须与loader正则匹配",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "publicPath": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "accessKeyId": {
+            "type": "string"
+        },
+        "accessKeySecret": {
+            "type": "string"
+        },
+        "stsToken": {
+            "type": "string"
+        },
+        "bucket": {
+            "type": "string"
+        }
+    },
+    "required": ["test", "publicPath"],
+    "additionalProperties": false
+}
