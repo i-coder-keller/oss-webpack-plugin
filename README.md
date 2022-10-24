@@ -15,7 +15,7 @@ npm i --save-dev oss-webpack-plugin
 ```
 
 ```bash
-yarn add --dev html-webpack-plugin
+yarn add --dev oss-webpack-plugin
 ```
 
 这是一个 [webpack](http://webpack.js.org/) 插件 他可以为你的`webpack`静态资源提供服务，你可以提供一些正则来匹配你想要服务的资源，包括不限于图片、css等，插件内置了阿里云oss服务，你可以输入一些配置来决定你的oss配置，或则来提供一个上传函数来自定义上传
