@@ -2,7 +2,7 @@
   "name": "oss-webpack-plugin",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "core/index.js",
   "scripts": {
     "lib:watch": "rollup --config rollup.config.js --watch",
     "lib:build": "rollup --config rollup.config.js",
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.19.6",
+    "ali-oss": "^6.17.1",
     "schema-utils": "^4.0.0"
   }
 }
