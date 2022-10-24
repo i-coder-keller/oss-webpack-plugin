@@ -1,4 +1,5 @@
 const { validate } = require('schema-utils')
+const { fileValidate } = require('./utils')
 const schema = require('./schema.json')
 const OSS = require('ali-oss')
 const PLUGIN_NAME = "oss-webpack-plugin"
@@ -12,8 +13,12 @@ class OssWebpackPlugin {
     }
     apply(compiler) {
         this.repairUrl(compiler)
-        compiler.hooks.emit.tagAsync(PLUGIN_NAME, compilation => {
-            console.log(compilation.assets)
+        compiler.hooks.emit.tapAsync(PLUGIN_NAME, compilation => {
+            const assets = Object.keys(compilation.assets).filter(key => fileValidate(key, this.options.test))
+            assets.forEach(key => {
+                const source = compilation.assets[key].source()
+                this.upload(key, source)
+            })
         })
 
     }
@@ -42,7 +47,8 @@ class OssWebpackPlugin {
     }
     async upload(fileName, fileBlob) {
         try {
-            await this.client.put(fileName, fileBlob)
+            const result = await this.client.put(fileName, fileBlob)
+            console.log(`upload success: ${result}`)
         } catch (error) {
             throw new Error(`${PLUGIN_NAME}:upload error: ${error}`)
         }

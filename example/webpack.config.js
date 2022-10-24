@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { AliossWebpackPlugin } = require('../src/index.js')
+const { OssWebpackPlugin } = require('../src/index.js')
 const path = require('path')
 module.exports = {
     entry: './src/index.js',
@@ -17,7 +17,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
-        new AliossWebpackPlugin({
+        new OssWebpackPlugin({
             test: [/\.(jpe?g|svg|png)$/, /.css$/i],
             publicPath: 'http://www.baidu.com/'
         })
