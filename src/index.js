@@ -17,14 +17,13 @@ class OssWebpackPlugin {
     }
     apply(compiler) {
         this.repairUrl(compiler)
-        compiler.hooks.emit.tapAsync(PLUGIN_NAME, compilation => {
+        compiler.hooks.emit.tapAsync(PLUGIN_NAME, (compilation, callback) => {
             const assets = Object.keys(compilation.assets).filter(key => fileValidate(key, this.options.test))
             assets.forEach(key => {
                 const source = compilation.assets[key].source()
                 this.upload(key, source)
             })
         })
-
     }
     repairUrl(compiler) {
         const reg2strings = this.options.test.map(reg => `${reg}`)
