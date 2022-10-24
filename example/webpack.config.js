@@ -1,6 +1,20 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { OssWebpackPlugin } = require('../src/index.js')
 const path = require('path')
+console.log(JSON.stringify(
+    {
+        test: [/\.(jpe?g|svg|png)$/, /.css$/i],
+        publicPath: 'http://www.baidu.com/',
+        region: '',
+        accessKeyId: '',
+        accessKeySecret: '',
+        stsToken: '',
+        bucket: '',
+        upload(filename, file) {
+            console.log(filename, file)
+        }
+    }
+))
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -19,7 +33,15 @@ module.exports = {
         }),
         new OssWebpackPlugin({
             test: [/\.(jpe?g|svg|png)$/, /.css$/i],
-            publicPath: 'http://www.baidu.com/'
+            publicPath: 'http://www.baidu.com/',
+            region: '',
+            accessKeyId: '',
+            accessKeySecret: '',
+            stsToken: '',
+            bucket: '',
+            upload(filename, file) {
+                console.log(filename, file)
+            }
         })
     ]
 }

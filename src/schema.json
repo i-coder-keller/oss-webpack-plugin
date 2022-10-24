@@ -1,32 +1,89 @@
 {
     "type": "object",
+    "required": [
+        "test",
+        "publicPath",
+        "region",
+        "accessKeyId",
+        "accessKeySecret",
+        "stsToken",
+        "bucket"
+    ],
     "properties": {
         "test": {
-            "description": "需要上传到oss的文件类型数组，元素类型为正则，必须与loader正则匹配",
             "type": "array",
+            "default": [],
+            "title": "The test Schema",
             "items": {
-                "type": "string"
-            }
+                "type": "object",
+                "title": "A Schema",
+                "required": [],
+                "properties": {},
+                "examples": [{},
+                {}]
+            },
+            "examples": [
+                [{},
+                    {}]
+            ]
         },
         "publicPath": {
-            "type": "string"
+            "type": "string",
+            "default": "",
+            "title": "The publicPath Schema",
+            "examples": [
+                "http://www.baidu.com/"
+            ]
         },
         "region": {
-            "type": "string"
+            "type": "string",
+            "default": "",
+            "title": "The region Schema",
+            "examples": [
+                ""
+            ]
         },
         "accessKeyId": {
-            "type": "string"
+            "type": "string",
+            "default": "",
+            "title": "The accessKeyId Schema",
+            "examples": [
+                ""
+            ]
         },
         "accessKeySecret": {
-            "type": "string"
+            "type": "string",
+            "default": "",
+            "title": "The accessKeySecret Schema",
+            "examples": [
+                ""
+            ]
         },
         "stsToken": {
-            "type": "string"
+            "type": "string",
+            "default": "",
+            "title": "The stsToken Schema",
+            "examples": [
+                ""
+            ]
         },
         "bucket": {
-            "type": "string"
+            "type": "string",
+            "default": "",
+            "title": "The bucket Schema",
+            "examples": [
+                ""
+            ]
         }
     },
-    "required": ["test", "publicPath"],
-    "additionalProperties": false
+    "examples": [{
+        "test": [{},
+        {}],
+        "publicPath": "http://www.baidu.com/",
+        "region": "",
+        "accessKeyId": "",
+        "accessKeySecret": "",
+        "stsToken": "",
+        "bucket": ""
+    }]
 }

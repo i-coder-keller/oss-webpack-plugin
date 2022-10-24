@@ -11,6 +11,9 @@ class OssWebpackPlugin {
     constructor(options) {
         validate(schema, options, { name: PLUGIN_NAME })
         this.options = options
+        if (options.upload) {
+            this.upload = options.upload
+        }
     }
     apply(compiler) {
         this.repairUrl(compiler)
@@ -51,7 +54,7 @@ class OssWebpackPlugin {
             const result = await this.client.put(fileName, fileBlob)
             console.log(green(`🚀 ${PLUGIN_NAME}: upload success: ${red(result)}`))
         } catch (error) {
-            throw new Error(`${PLUGIN_NAME}: upload error: ${error}`)
+            console.log(red(`${PLUGIN_NAME}: upload error: ${error}`))
         }
     }
 }
