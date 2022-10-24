@@ -1,4 +1,5 @@
 const { validate } = require('schema-utils')
+const { green, red } = require('colors')
 const { fileValidate } = require('./utils')
 const schema = require('./schema.json')
 const OSS = require('ali-oss')
@@ -48,9 +49,9 @@ class OssWebpackPlugin {
     async upload(fileName, fileBlob) {
         try {
             const result = await this.client.put(fileName, fileBlob)
-            console.log(`upload success: ${result}`)
+            console.log(green(`${PLUGIN_NAME}: upload success: ${red(result)}`))
         } catch (error) {
-            throw new Error(`${PLUGIN_NAME}:upload error: ${error}`)
+            throw new Error(`${PLUGIN_NAME}: upload error: ${error}`)
         }
     }
 }
